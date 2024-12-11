@@ -1,0 +1,659 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dukun ML</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <link rel="manifest" href="/static/site.webmanifest">
+
+    <link rel="preconnect" href="//fonts.googleapis.com">
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin="">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/app.css">
+    <script src="static/js/preline.js"></script>
+</head>
+
+<body>
+    <header class="sticky flex flex-wrap w-full text-sm bg-white border-b sm:justify-start sm:flex-nowrap dark:bg-neutral-900 dark:border-neutral-700">
+        <nav class="w-full p-4 xl:px-0 mx-auto max-w-[85rem] flex items-center justify-between">
+            <div class="flex items-end justify-start">
+                <a class="flex-none text-2xl font-bold text-transparent focus:outline-none focus:opacity-80 bg-gradient-to-tl from-blue-700 to-blue-400 bg-clip-text" href="#" aria-label="Brand">
+                    Dukun ML
+                </a>
+                <a class="ml-2 mb-1 flex-none items-begin text-xs font-bold text-transparent focus:outline-none focus:opacity-80 bg-gradient-to-tl from-blue-700 to-blue-400 bg-clip-text">by Kuroyama</a>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <div class="relative inline-block">
+                    <input type="checkbox" id="darkSwitch" data-hs-theme-switch="" class="peer relative shrink-0 w-[4.25rem] h-9 p-px bg-gray-100 border border-gray-200 text-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none checked:bg-none checked:text-blue-100 checked:border-blue-200 focus:checked:border-blue-200 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-800/30 dark:checked:border-blue-800 dark:focus:ring-offset-gray-600 before:inline-block before:w-8 before:h-8 before:bg-white checked:before:bg-blue-600 before:translate-x-0 checked:before:translate-x-full before:rounded-full before:transform before:ring-0 before:transition before:ease-in-out before:duration-200 dark:before:bg-neutral-400 dark:checked:before:bg-blue-500">
+                    <label for="darkSwitch" class="sr-only">switch</label>
+                    <span class="peer-checked:text-blue-600 text-gray-500 size-8 absolute top-0.5 start-0.5 flex justify-center items-center pointer-events-none transition-colors ease-in-out duration-200 dark:text-neutral-500">
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <g fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <path stroke-linecap="round" d="M12 2v1m0 18v1m10-10h-1M3 12H2m17.07-7.07l-.392.393M5.322 18.678l-.393.393m14.141-.001l-.392-.393M5.322 5.322l-.393-.393"></path>
+                            </g>
+                        </svg>
+                    </span>
+                    <span class="peer-checked:text-white size-8 absolute top-0.5 end-0.5 flex justify-center items-center pointer-events-none transition-colors ease-in-out duration-200 dark:text-neutral-500">
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="m21.067 11.857l-.642-.388zm-8.924-8.924l-.388-.642zM21.25 12A9.25 9.25 0 0 1 12 21.25v1.5c5.937 0 10.75-4.813 10.75-10.75zM12 21.25A9.25 9.25 0 0 1 2.75 12h-1.5c0 5.937 4.813 10.75 10.75 10.75zM2.75 12A9.25 9.25 0 0 1 12 2.75v-1.5C6.063 1.25 1.25 6.063 1.25 12zm12.75 2.25A5.75 5.75 0 0 1 9.75 8.5h-1.5a7.25 7.25 0 0 0 7.25 7.25zm4.925-2.781A5.75 5.75 0 0 1 15.5 14.25v1.5a7.25 7.25 0 0 0 6.21-3.505zM9.75 8.5a5.75 5.75 0 0 1 2.781-4.925l-.776-1.284A7.25 7.25 0 0 0 8.25 8.5zM12 2.75a.38.38 0 0 1-.268-.118a.3.3 0 0 1-.082-.155c-.004-.031-.002-.121.105-.186l.776 1.284c.503-.304.665-.861.606-1.299c-.062-.455-.42-1.026-1.137-1.026zm9.71 9.495c-.066.107-.156.109-.187.105a.3.3 0 0 1-.155-.082a.38.38 0 0 1-.118-.268h1.5c0-.717-.571-1.075-1.026-1.137c-.438-.059-.995.103-1.299.606z"></path>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="relative w-full px-4 py-6 xl:px-0 mx-auto max-w-[85rem] min-h-[calc(100vh-4.4rem)] space-y-3">
+        <div class="flex items-center w-full gap-1">
+            <div class="w-full">
+                <label for="token" class="sr-only">Label</label>
+                <div class="relative flex rounded-lg shadow-sm">
+                    <input type="text" id="token" name="token" placeholder="Masukkan Token Anda disini..." class="block w-full px-4 py-3 text-sm border-gray-200 shadow-sm blur-sm ps-14 rounded-s-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                    <div class="absolute inset-y-0 z-20 flex items-center px-4 cursor-pointer start-0 hover:text-blue-500" id="blur-token">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="eye-show">
+                            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path d="M2.062 12.348a1 1 0 0 1 0-.696a10.75 10.75 0 0 1 19.876 0a1 1 0 0 1 0 .696a10.75 10.75 0 0 1-19.876 0"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </g>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" id="eye-off" class="hidden">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 18l-.722-3.25M2 8a10.645 10.645 0 0 0 20 0m-2 7l-1.726-2.05M4 15l1.726-2.05M9 18l.722-3.25"></path>
+                        </svg>
+                    </div>
+                    <button type="button" id="check-btn" class="inline-flex items-center justify-center px-4 py-3 text-sm font-semibold text-white bg-blue-600 border border-transparent gap-x-2 rounded-e-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        GO
+                    </button>
+                </div>
+            </div>
+            <button type="button" class="px-4 py-3 text-white rounded-lg btn-secondary" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-setting-modal" data-hs-overlay="#hs-setting-modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <defs>
+                        <symbol id="lineMdCog0">
+                            <path d="M15.24 6.37C15.65 6.6 16.04 6.88 16.38 7.2C16.6 7.4 16.8 7.61 16.99 7.83C17.46 8.4 17.85 9.05 18.11 9.77C18.2 10.03 18.28 10.31 18.35 10.59C18.45 11.04 18.5 11.52 18.5 12">
+                                <animate fill="freeze" attributeName="d" begin="0.9s" dur="0.2s" values="M15.24 6.37C15.65 6.6 16.04 6.88 16.38 7.2C16.6 7.4 16.8 7.61 16.99 7.83C17.46 8.4 17.85 9.05 18.11 9.77C18.2 10.03 18.28 10.31 18.35 10.59C18.45 11.04 18.5 11.52 18.5 12;M15.24 6.37C15.65 6.6 16.04 6.88 16.38 7.2C16.38 7.2 19 6.12 19.01 6.14C19.01 6.14 20.57 8.84 20.57 8.84C20.58 8.87 18.35 10.59 18.35 10.59C18.45 11.04 18.5 11.52 18.5 12"></animate>
+                            </path>
+                        </symbol>
+                    </defs>
+                    <g fill="none" stroke="currentColor" stroke-width="2">
+                        <g stroke-linecap="round">
+                            <path stroke-dasharray="20" stroke-dashoffset="20" d="M12 9c1.66 0 3 1.34 3 3c0 1.66 -1.34 3 -3 3c-1.66 0 -3 -1.34 -3 -3c0 -1.66 1.34 -3 3 -3Z">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.2s" values="20;0"></animate>
+                            </path>
+                            <path stroke-dasharray="48" stroke-dashoffset="48" d="M12 5.5c3.59 0 6.5 2.91 6.5 6.5c0 3.59 -2.91 6.5 -6.5 6.5c-3.59 0 -6.5 -2.91 -6.5 -6.5c0 -3.59 2.91 -6.5 6.5 -6.5Z">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.2s" dur="0.6s" values="48;0"></animate>
+                                <set fill="freeze" attributeName="opacity" begin="0.9s" to="0"></set>
+                            </path>
+                        </g>
+                        <g opacity="0">
+                            <use href="#lineMdCog0"></use>
+                            <use href="#lineMdCog0" transform="rotate(60 12 12)"></use>
+                            <use href="#lineMdCog0" transform="rotate(120 12 12)"></use>
+                            <use href="#lineMdCog0" transform="rotate(180 12 12)"></use>
+                            <use href="#lineMdCog0" transform="rotate(240 12 12)"></use>
+                            <use href="#lineMdCog0" transform="rotate(300 12 12)"></use>
+                            <set fill="freeze" attributeName="opacity" begin="0.9s" to="1"></set>
+                        </g>
+                    </g>
+                </svg>
+            </button>
+        </div>
+
+        <div id="team-table">
+            <div class="my-3 text-xl font-bold text-blue-600 ps-5">
+                TEAM
+            </div>
+            <div class="flex flex-col">
+                <div class="overflow-x-auto">
+                    <div class="inline-block min-w-full align-middle">
+                        <div class="overflow-hidden border rounded-lg dark:border-neutral-700">
+                            <table class="table min-w-full divide-y divide-gray-200 dark:divide-neutral-700 w-fit">
+                                <thead class="bg-gray-50 dark:bg-neutral-700">
+                                    <tr>
+                                        <th scope="col" style="width: 10%">
+                                            ID (Server)
+                                        </th>
+                                        <th scope="col" style="width: 15%">
+                                            Nickname
+                                        </th>
+                                        <th scope="col" style="width: 15%">
+                                            Squad
+                                        </th>
+                                        <th scope="col" style="width: 30%">
+                                            Rank
+                                        </th>
+                                        <th scope="col" style="width: 20%">
+                                            Win Rates
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
+                                    <tr><td class="text-center" colspan="5">
+                                        Waiting for data...
+                                    </td>
+                                </tr></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="enemy-table">
+            <div class="my-3 text-xl font-bold text-red-600 ps-5">
+                ENEMY
+            </div>
+            <div class="flex flex-col">
+                <div class="overflow-x-auto">
+                    <div class="inline-block min-w-full align-middle">
+                        <div class="overflow-hidden border rounded-lg dark:border-neutral-700">
+                            <table class="table min-w-full divide-y divide-gray-200 dark:divide-neutral-700 w-fit">
+                                <thead class="bg-gray-50 dark:bg-neutral-700">
+                                    <tr>
+                                        <th scope="col" style="width: 10%">
+                                            ID (Server)
+                                        </th>
+                                        <th scope="col" style="width: 15%">
+                                            Nickname
+                                        </th>
+                                        <th scope="col" style="width: 15%">
+                                            Squad
+                                        </th>
+                                        <th scope="col" style="width: 30%">
+                                            Rank
+                                        </th>
+                                        <th scope="col" style="width: 20%">
+                                            Win Rates
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
+                                    <tr>
+                                        <td class="text-center" colspan="5">
+                                            Waiting for data...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-sm italic text-neutral-600 dark:text-neutral-400">
+            *Shown Win Rates are for the current season.
+        </p>
+    </main>
+
+    <!-- Settings modal -->
+    <div id="hs-setting-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-[80] overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-setting-modal-label">
+        <div class="m-3 mt-0 transition-all ease-out opacity-0 hs-overlay-open:mt-20 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 sm:max-w-lg sm:w-full sm:mx-auto">
+            <div class="flex flex-col w-full bg-white border shadow-sm pointer-events-auto rounded-xl dark:bg-neutral-800 dark:border-neutral-700 dark:shadow-neutral-700/70">
+                <div class="flex items-center justify-between px-4 py-3 border-b dark:border-neutral-700">
+                    <h3 id="hs-setting-modal-label" class="font-bold text-gray-800 dark:text-white">
+                        Settings
+                    </h3>
+                    <button type="button" class="inline-flex items-center justify-center text-gray-800 bg-gray-100 border border-transparent rounded-full size-8 gap-x-2 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400 dark:focus:bg-neutral-600" aria-label="Close" data-hs-overlay="#hs-setting-modal">
+                        <span class="sr-only">Close</span>
+                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-4 overflow-y-auto">
+                    <div class="mt-3 space-y-2">
+                        <div class="font-medium">• Config:</div>
+                        <div class="flex">
+                            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="auto-ready" name="auto-ready">
+                            <label for="auto-ready" class="text-sm text-gray-700 ms-3 dark:text-neutral-300">Auto Ready</label>
+                        </div>
+                        <label for="server" class="block mb-2 text-sm font-medium dark:text-white">Server:</label>
+                        <select id="server" name="server" class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg pe-9 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                            
+                            <option value="wss://service-mlbb-id.aimar.id" selected="">ID - Main Server</option>
+                            
+                            <option value="wss://service-mlbb-sg.aimar.id">SG - Main Server</option>
+                            
+                        </select>
+                    </div>
+                    <div class="mt-3 space-y-2">
+                        <div class="font-medium">• View:</div>
+                        <div class="flex">
+                            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="show-enemy-only" name="show-enemy-only">
+                            <label for="show-enemy-only" class="text-sm text-gray-700 ms-3 dark:text-neutral-300">Show Enemy Only</label>
+                        </div>
+                        <div class="flex">
+                            <input type="checkbox" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="show-battle-count" name="show-battle-count">
+                            <label for="show-battle-count" class="text-sm text-gray-700 ms-3 dark:text-neutral-300">Show Battle Count</label>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <label for="win-rates-option" class="block mb-2 text-sm font-medium dark:text-white">Show Win Rate(s):</label>
+                        <select id="win-rates-option" name="win-rates-option" class="block w-full px-4 py-3 text-sm border-gray-200 rounded-lg pe-9 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                            <option value="all">All</option>
+                            <option value="total">Total</option>
+                            <option value="classic">Classic</option>
+                            <option value="ranked">Ranked</option>
+                            <option value="brawl">Brawl</option>
+                        </select>
+                    </div>
+                    <div class="mt-3">
+                        <div id="token-expiration" class="text-sm italic text-gray-600 dark:text-neutral-400">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between px-4 py-3 border-t gap-x-2 dark:border-neutral-700">
+                    <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" data-hs-overlay="#hs-setting-modal">
+                        Close
+                    </button>
+                    <button type="button" id="save-setting" class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../HbB7vCaRLxJt.com/mF7Hrp2U0CYT.js" crossorigin="anonymous"></script>
+    <script src="static/js/alert.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            let isChangingServer = false;
+            let hasError = false;
+            let socket = null;
+
+            $("#check-btn").on("click", function() {
+                var token = $("#token").val();
+                if (!token) {
+                    addAlert("Token is required!", "error", 3000);
+                    return;
+                }
+    
+                if (token.length < 15) {
+                    addAlert("Invalid token!", "error", 3000);
+                    $("#check-btn").prop("disabled", false);
+                    return;
+                }
+
+                $teamTable = $('#team-table');
+                $enemyTable = $('#enemy-table');
+
+                $teamTable.find('tbody').empty();
+                $enemyTable.find('tbody').empty();
+
+                const $tableSkeleton = `
+                    <tr>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                        <td>
+                            <div class="skeleton"></div>
+                        </td>
+                    </tr>
+                `;
+
+                $teamTable.find('tbody').append(
+                    Array.from({ length: 5 }, () => $tableSkeleton).join('')
+                );
+
+                $enemyTable.find('tbody').append(
+                    Array.from({ length: 5 }, () => $tableSkeleton).join('')
+                );
+    
+                socket.send(JSON.stringify({
+                    type: "start_task",
+                    token: token,
+                    autoReady: localStorage.getItem("autoReady") === "true",
+                }));
+
+                $(this).prop("disabled", true);
+                $("#token").prop("disabled", true);
+            });
+
+            $("#blur-token").click(function() {
+                const $tokenInput = $("#token");
+                const $eyeShow = $("#eye-show");
+                const $eyeOff = $("#eye-off");
+
+                if ($tokenInput.hasClass("blur-sm")) {
+                    $tokenInput.removeClass("blur-sm");
+                    $eyeShow.addClass("hidden");
+                    $eyeOff.removeClass("hidden");
+                } else {
+                    $tokenInput.addClass("blur-sm");
+                    $eyeShow.removeClass("hidden");
+                    $eyeOff.addClass("hidden");
+                }
+            });
+
+            $("#save-setting").on("click", function() {
+                const prevServer = localStorage.getItem("server");
+                localStorage.setItem("server", $("#server").val());
+                localStorage.setItem(
+                    "showEnemyOnly",
+                    $("#show-enemy-only").prop("checked"),
+                );
+                localStorage.setItem(
+                    "autoReady",
+                    $("#auto-ready").prop("checked"),
+                );
+                localStorage.setItem(
+                    "showBattleCount",
+                    $("#show-battle-count").prop("checked"),
+                );
+                localStorage.setItem(
+                    "winRatesOption",
+                    $("#win-rates-option").val(),
+                );
+                const modal = new HSOverlay.close("#hs-setting-modal");
+                if (prevServer !== $("#server").val()) {
+                    if (socket) {
+                        socket.close();
+                    }
+                    isChangingServer = true;
+                    connectToServer();
+                }
+            });
+    
+            function startCountdown(countdown) {
+                const countDownAlert = addAlert(
+                    `Game will start in ${countdown} second(s)...`,
+                    "info",
+                    countdown * 1000,
+                );
+                let countdownInterval = setInterval(function() {
+                    countdown--;
+                    countDownAlert.querySelector(
+                            ".alert-text",
+                        ).textContent =
+                        `Game will start in ${countdown} second(s)...`;
+                    if (countdown === 0) {
+                        clearInterval(countdownInterval);
+                        closeAlert(countDownAlert);
+                    }
+                }, 1000);
+            }
+    
+            function updateTableLayout() {
+                var showEnemyOnly = $("#show-enemy-only").prop("checked");
+                var $teamTable = $("#team-table");
+                var $enemyTable = $("#enemy-table");
+    
+                if (showEnemyOnly) {
+                    $teamTable.hide();
+                } else {
+                    $teamTable.show();
+                }
+            }
+    
+            function randomColor(roomId) {
+                const colorList = [
+                    "rgba(108, 92, 231, 0.25)", // Purple
+                    "rgba(255, 159, 67, 0.25)", // Orange
+                    "rgba(72, 219, 251, 0.25)", // Light Blue
+                    "rgba(29, 209, 161, 0.25)", // Mint Green
+                    "rgba(85, 98, 112, 0.25)", // Gray Blue
+                    "rgba(255, 107, 107, 0.25)", // Soft Red
+                    "rgba(255, 210, 63, 0.25)", // Golden Yellow
+                    "rgba(52, 172, 224, 0.25)", // Sky Blue
+                    "rgba(11, 232, 129, 0.25)", // Bright Green
+                    "rgba(224, 86, 253, 0.25)", // Magenta
+                ];
+    
+                let hash = Number(roomId);
+                hash = (hash * 9301 + 49297) % 233280;
+                const colorIndex = hash % colorList.length;
+    
+                return colorList[colorIndex];
+            }
+    
+            function onSocketConnect() {
+                isChangingServer = false;
+                $("#check-btn").prop("disabled", false);
+                const serverName = $("#server").find(":selected").text();
+                addAlert(
+                    `Connected to Server [${serverName}]!`,
+                    "success",
+                    3000,
+                );
+            }
+    
+            function onSocketError(error) {
+                addAlert(error.message, "error");
+                hasError = true;
+
+                const $teamTable = $("#team-table");
+                const $enemyTable = $("#enemy-table");
+
+                const $tableWaiting = `
+                    <tr>
+                        <td class="text-center" colspan="5">
+                            Waiting for data...
+                        </td>
+                    </tr>
+                `;
+
+                $enemyTable.find("tbody").html($tableWaiting);
+                $teamTable.find("tbody").html($tableWaiting);
+    
+                $("#token").prop("disabled", false);
+                $("#check-btn").prop("disabled", false);
+            }
+    
+            function onSocketDisconnect() {
+                $("#check-btn").prop("disabled", true);
+                if (isChangingServer) {
+                    return;
+                }
+    
+                addAlert("Reconnecting...", "error");
+                hasError = true;
+                setTimeout(connectToServer, 5000);
+            }
+
+            function onSocketResult(response) {
+                if (response.type == 'message') {
+                    addAlert(response.message, "info");
+                    $("#token").prop("disabled", false);
+                    $("#check-btn").prop("disabled", false);
+                } else
+                if (response.type == 'error') {
+                    addAlert(response.message, "error");
+                    $("#token").prop("disabled", false);
+                    $("#check-btn").prop("disabled", false);
+                } else 
+                if (response.type == 'task_id') {
+                    localStorage.setItem("task_id", response.task_id);
+                } else
+                if (response.type == 'task_result') {
+                    localStorage.setItem("token", $("#token").val());
+                    updateTokenExpiration();
+
+                    const timestamp = response.data.timestamp; // in seconds
+                    const now = Math.floor(Date.now() / 1000);
+                    const diff = now - timestamp;
+                    
+                    startCountdown(30 - diff);
+        
+                    const $teamTable = $("#team-table");
+                    const $enemyTable = $("#enemy-table");
+        
+                    $teamTable.find("tbody").empty();
+                    $enemyTable.find("tbody").empty();
+        
+                    const partyColors = [];
+                    [...response.data.team, ...response.data.enemy].forEach(function(player, index) {
+                        partyColors.push({
+                        room_id: player.room_id,
+                        color: randomColor(player.room_id),
+                        });
+                    });  
+        
+                    response.data.team.forEach(function(player) {
+                        let wr = "";
+                        const showBattleCount =
+                            $("#show-battle-count").prop("checked");
+                        const winRatesOption = $("#win-rates-option").val();
+                        if (winRatesOption === "all") {
+                            if (showBattleCount) {
+                                wr = `Classic: ${player.win_rates.classic_wr.toFixed(2)}% (${player.win_rates.classic}), Ranked: ${player.win_rates.ranked_wr.toFixed(2)}% (${player.win_rates.ranked}), Brawl: ${player.win_rates.brawl_wr.toFixed(2)}% (${player.win_rates.brawl}), Total: ${player.win_rates.total_wr.toFixed(2)}% (${player.win_rates.total})`;
+                            } else {
+                                wr = `Classic: ${player.win_rates.classic_wr.toFixed(2)}%, Ranked: ${player.win_rates.ranked_wr.toFixed(2)}%, Brawl: ${player.win_rates.brawl_wr.toFixed(2)}%, Total: ${player.win_rates.total_wr.toFixed(2)}%`;
+                            }
+                        } else {
+                            if (showBattleCount) {
+                                wr = `${winRatesOption.charAt(0).toUpperCase() + winRatesOption.slice(1)}: ${player.win_rates[winRatesOption + "_wr"].toFixed(2)}% (${player.win_rates[winRatesOption]})`;
+                            } else {
+                                wr = `${winRatesOption.charAt(0).toUpperCase() + winRatesOption.slice(1)}: ${player.win_rates[winRatesOption + "_wr"].toFixed(2)}%`;
+                            }
+                        }
+        
+                        const color = partyColors.filter(partyColor => partyColor.room_id === player.room_id).length > 1 ? partyColors.filter(partyColor => partyColor.room_id === player.room_id)[0].color : "";
+                        $teamTable.find("tbody").append(`
+                            <tr style="background-color: ${color}">
+                                <td>${player.game_id} (${player.server_id})</td>
+                                <td>${player.nickname}</td>
+                                <td>${player.squad}</td>
+                                <td>${player.rank} (Highest: ${player.highest_rank})</td>
+                                <td>${wr}</td>
+                            </tr>`);
+                    });
+        
+                    response.data.enemy.forEach(function(player) {
+                        let wr = "";
+                        const showBattleCount = $("#show-battle-count").prop("checked");
+                        const winRatesOption = $("#win-rates-option").val();
+                        if (winRatesOption === "all") {
+                            if (showBattleCount) {
+                                wr = `Classic: ${player.win_rates.classic_wr.toFixed(2)}% (${player.win_rates.classic}), Ranked: ${player.win_rates.ranked_wr.toFixed(2)}% (${player.win_rates.ranked}), Brawl: ${player.win_rates.brawl_wr.toFixed(2)}% (${player.win_rates.brawl}), Total: ${player.win_rates.total_wr.toFixed(2)}% (${player.win_rates.total})`;
+                            } else {
+                                wr = `Classic: ${player.win_rates.classic_wr.toFixed(2)}%, Ranked: ${player.win_rates.ranked_wr.toFixed(2)}%, Brawl: ${player.win_rates.brawl_wr.toFixed(2)}%, Total: ${player.win_rates.total_wr.toFixed(2)}%`;
+                            }
+                        } else {
+                            if (showBattleCount) {
+                                wr = `${winRatesOption.charAt(0).toUpperCase() + winRatesOption.slice(1)}: ${player.win_rates[winRatesOption + "_wr"].toFixed(2)}% (${player.win_rates[winRatesOption]})`;
+                            } else {
+                                wr = `${winRatesOption.charAt(0).toUpperCase() + winRatesOption.slice(1)}: ${player.win_rates[winRatesOption + "_wr"].toFixed(2)}%`;
+                            }
+                        }
+                        
+                        const color = partyColors.filter(partyColor => partyColor.room_id === player.room_id).length > 1 ? partyColors.filter(partyColor => partyColor.room_id === player.room_id)[0].color : "";
+                        $enemyTable.find("tbody").append(`
+                            <tr style="background-color: ${color}">
+                                <td>${player.game_id} (${player.server_id})</td>
+                                <td>${player.nickname}</td>
+                                <td>${player.squad}</td>
+                                <td>${player.rank} (Highest: ${player.highest_rank})</td>
+                                <td>${wr}</td>
+                            </tr>`);
+                    });
+        
+                    updateTableLayout();
+                    $("#token").prop("disabled", false);
+                    $("#check-btn").prop("disabled", false);
+                }
+            }
+    
+            function connectToServer() {
+                if (socket) {
+                    socket.close();
+                }
+
+                socket = new WebSocket($("#server").val());
+                socket.onopen = onSocketConnect;
+                socket.onclose = onSocketDisconnect;
+                socket.onerror = onSocketError;
+                socket.onmessage = function(event) {
+                    const data = JSON.parse(event.data);
+                    onSocketResult(data);
+                };
+            }
+
+            function loadSetting() {
+                if (localStorage.getItem("token")) {
+                    $("#token").val(localStorage.getItem("token"));
+                    updateTokenExpiration();
+                }
+
+                if (localStorage.getItem("server")) {
+                    $("#server").val(localStorage.getItem("server"));
+                }
+
+                if (localStorage.getItem("autoReady")) {
+                    $("#auto-ready").prop(
+                        "checked",
+                        localStorage.getItem("autoReady") === "true",
+                    );
+                }
+
+                if (localStorage.getItem("showEnemyOnly")) {
+                    $("#show-enemy-only").prop(
+                        "checked",
+                        localStorage.getItem("showEnemyOnly") === "true",
+                    );
+                    updateTableLayout();
+                }
+
+                if (localStorage.getItem("showBattleCount")) {
+                    $("#show-battle-count").prop(
+                        "checked",
+                        localStorage.getItem("showBattleCount") === "true",
+                    );
+                }
+
+                if (localStorage.getItem("winRatesOption")) {
+                    $("#win-rates-option").val(
+                        localStorage.getItem("winRatesOption"),
+                    );
+                }
+            }
+
+            function updateTokenExpiration() {
+                $.ajax({
+                    url: "/api/get-token-expiration",
+                    type: "GET",
+                    data: {
+                        token: $("#token").val(),
+                    },
+                    success: function(response) {
+                        if (response.expired_at == 'EXPIRED') {
+                            $("#token-expiration").text(
+                                `Token has been expired!`,
+                            );
+                            return;
+                        }
+
+                        $("#token-expiration").text(
+                            `Token will be expired at ${response.expired_at}.`,
+                        );
+                    },
+                    error: function(error) {
+                        $("#token-expiration").text("");
+                    },
+                });
+            }
+
+            loadSetting();
+            connectToServer();
+            updateTableLayout();
+    
+            $("#show-enemy-only").on("change", updateTableLayout);
+        });
+    </script>
+
+
+</body></html>
